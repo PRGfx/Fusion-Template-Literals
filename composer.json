@@ -1,0 +1,24 @@
+{
+    "name": "prgfx/fusion-template-literals",
+    "description": "A fusion DSL providing a syntax similar to the javascript tagged template literals",
+    "type": "neos-package",
+    "require": {
+        "neos/fusion": "*"
+    },
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Prgfx\\Fusion\\TemplateLiterals\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Prgfx\\Fusion\\TemplateLiterals\\Tests\\": "Tests"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-name": "Prgfx.Fusion.TemplateLiterals"
+        }
+    }
+}
