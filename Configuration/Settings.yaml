@@ -2,3 +2,9 @@ Neos:
   Fusion:
     dsl:
       plain: Prgfx\Fusion\TemplateLiterals\Fusion\PlainTemplateLiterals
+Prgfx:
+  Fusion:
+    TemplateLiterals:
+      formatting:
+        arrayPrototype: 'Neos.Fusion:Join'
+        indentation: '    '

@@ -4,13 +4,23 @@
 namespace Prgfx\Fusion\TemplateLiterals\Fusion;
 
 
+use Neos\Flow\Annotations as Flow;
 use Neos\Fusion;
 use Neos\Fusion\Core\DslInterface;
 
 class PlainTemplateLiterals implements DslInterface
 {
+    /**
+     * The Fusion prototype wrapping the rendered code
+     * @Flow\InjectConfiguration("formatting.arrayPrototype")
+     * @var string
+     */
     protected $arrayPrototype = 'Neos.Fusion:Join';
 
+    /**
+     * @Flow\InjectConfiguration("formatting.indentation")
+     * @var string
+     */
     protected $indentation = '    ';
 
     /**
