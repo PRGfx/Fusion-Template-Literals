@@ -8,3 +8,8 @@ Prgfx:
       formatting:
         arrayPrototype: 'Neos.Fusion:Join'
         indentation: '    '
+      blockDelimiters:
+        default: ''
+        block: '|'
+        singleLine: '>'
+        compress: '>>'
