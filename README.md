@@ -2,6 +2,10 @@
 
 A [Neos Fusion](https://github.com/neos/typoscript) DSL implementation based on tagged template literals in javascript.
 
+```
+composer require prgfx/fusion-template-literals
+```
+
 ## Usage
 By default this package defines the DSL identifier `plain`, but you can alias it for more meaningful tags for your application.
 ```js
