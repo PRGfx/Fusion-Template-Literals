@@ -146,11 +146,17 @@ class PlainTemplateLiterals implements DslInterface
         if ($blockMode === null) {
             return $code;
         }
+        $newLinePlaceholder = '(:plainTextLiteralsNewline:)';
+        if ($blockMode === self::BLOCKMODE_SINGLELINE || $blockMode === self::BLOCKMODE_COMPRESS) {
+            $code = preg_replace('/\n[\t ]*\n/m', $newLinePlaceholder . PHP_EOL, $code);
+            $lines = explode(PHP_EOL, $code);
+        }
         if (trim($lines[count($lines) - 1]) === '') {
             $lines = array_slice($lines, 1, -1);
         } else {
             $lines = array_slice($lines, 1);
         }
+        $glue = PHP_EOL;
         if ($blockMode === self::BLOCKMODE_BLOCK || $blockMode === self::BLOCKMODE_SINGLELINE) {
             if (preg_match('/^(\s*)/', $lines[0], $matches) === 1) {
                 $indentation = $matches[1];
@@ -162,14 +168,16 @@ class PlainTemplateLiterals implements DslInterface
                     return $line;
                 }, $lines);
                 if ($blockMode === self::BLOCKMODE_SINGLELINE) {
-                    return implode(' ', $lines);
+                    $glue = ' ';
                 }
             }
         } elseif ($blockMode === self::BLOCKMODE_COMPRESS) {
             $lines = array_map('trim', $lines);
-            return implode(' ', $lines);
+            $glue = ' ';
         }
-        return implode(PHP_EOL, $lines);
+        $result = implode($glue, $lines);
+        $result = str_replace($newLinePlaceholder . ' ', "\n", $result);
+        return $result;
     }
 
     /**

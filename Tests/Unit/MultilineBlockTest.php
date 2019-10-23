@@ -129,6 +129,25 @@ FUSION;
     /**
      * @test
      */
+    public function testNewlinesInSingleLineMode()
+    {
+        $code = <<<'FUSION'
+        value = plain`>
+            line 1
+            line 2
+
+            line 3
+        `
+FUSION;
+        $fusion = $this->dsl->transpile($this->getDslCode($code));
+        $expectedValue = '\'line 1 line 2
+line 3\'' . PHP_EOL;
+        $this->assertEquals($expectedValue, $fusion);
+    }
+
+    /**
+     * @test
+     */
     public function testCompressedMode()
     {
         $code = <<<'FUSION'

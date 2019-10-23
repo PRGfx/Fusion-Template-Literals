@@ -41,13 +41,16 @@ value = plain`|
 ```
 
 ### singleLine
-will trim all indentation and join newlines with a single space.
+will trim all indentation and join newlines with a single space.  
+double newlines will create a line break.
 ```js
 value = plain`>
     line 1
     line 2
+
+    line 3
 `
-// 'line 1 line 2'
+// 'line 1 line 2\nline3'
 ```
 
 ### compress
