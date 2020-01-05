@@ -1,7 +1,7 @@
 {
     "name": "prgfx/fusion-template-literals",
     "description": "A fusion DSL providing a syntax similar to the javascript tagged template literals",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "type": "neos-package",
     "require": {
         "neos/fusion": "*"
