@@ -1,13 +1,15 @@
 Neos:
   Fusion:
     dsl:
-      plain: Prgfx\Fusion\TemplateLiterals\Fusion\PlainTemplateLiterals
+      inline: Prgfx\Fusion\TemplateLiterals\Fusion\PlainTemplateLiterals
+      plain: Prgfx\Fusion\TemplateLiterals\Fusion\ArrayRenderer
 Prgfx:
   Fusion:
     TemplateLiterals:
       formatting:
-        arrayPrototype: 'Neos.Fusion:Join'
-        indentation: '    '
+        arrayRenderer:
+          arrayPrototype: 'Neos.Fusion:Join'
+          indentation: '    '
       blockDelimiters:
         default: ''
         block: '|'
