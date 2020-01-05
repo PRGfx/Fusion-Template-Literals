@@ -2,18 +2,18 @@
 namespace Prgfx\Fusion\TemplateLiterals\Tests\Unit;
 
 use Neos\Flow\Tests\UnitTestCase;
-use Prgfx\Fusion\TemplateLiterals\Fusion\PlainTemplateLiterals;
+use Prgfx\Fusion\TemplateLiterals\Fusion\ArrayRenderer;
 
-class PlainTemplateLiteralTest extends UnitTestCase
+class ArrayRendererTest extends UnitTestCase
 {
     /**
-     * @var PlainTemplateLiterals
+     * @var ArrayRenderer
      */
     protected $dsl;
 
     public function setUp()
     {
-        $this->dsl = new PlainTemplateLiterals();
+        $this->dsl = new ArrayRenderer();
     }
 
     /**

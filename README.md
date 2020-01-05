@@ -14,6 +14,14 @@ p = Some.Example:Prototype {
 }
 ```
 
+This package comes with two implementations: an array-renderer (creating a fusion array-like object (e.g. `Neos.Fusion:Array` or `Neos.Fusion:Join` as per configuration)) and an eel-expression renderer.  
+The latter has the advantage that you may reference variables as `${this.variable}` as it would seem intuitive:
+```js
+trackingId = ${Configuration.setting(...)}
+snippet = inline`(w=> { w.qa=w.qa||[];w.qa.push('create', '${this.trackingId}');})(window);`
+```
+**However** this does not work well with multiline blocks as the eel expression does not properly output newlines. This would be fine for snippets like shown above with block mode `compress` (see below). (After all this package mainly targets such scenarios.)
+
 ## Multiline blocks
 Given a block-mode modifier in the first line (and nothing else in this line), multiline blocks may be interpreted differently.
 The block-mode modifier can be configured in `Prgfx.Fusion.TemplateLiterals.blockDelimiters` to your preferences.

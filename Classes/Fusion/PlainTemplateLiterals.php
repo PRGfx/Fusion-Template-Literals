@@ -17,19 +17,6 @@ class PlainTemplateLiterals implements DslInterface
     const BLOCKMODE_COMPRESS = 'compress';
 
     /**
-     * The Fusion prototype wrapping the rendered code
-     * @Flow\InjectConfiguration("formatting.arrayPrototype")
-     * @var string
-     */
-    protected $arrayPrototype = 'Neos.Fusion:Join';
-
-    /**
-     * @Flow\InjectConfiguration("formatting.indentation")
-     * @var string
-     */
-    protected $indentation = '    ';
-
-    /**
      * @Flow\InjectConfiguration("blockDelimiters")
      * @var array
      */
@@ -197,17 +184,19 @@ class PlainTemplateLiterals implements DslInterface
         if (count($expressions) === 1 && $stringParts[0] === '' && $stringParts[1] === '') {
             return '${' . $expressions[0] . '}' . PHP_EOL;
         }
-        $code = $this->arrayPrototype . ' {' . PHP_EOL;
+        $parts = [];
         for ($i = 0; $i < count($stringParts); $i++) {
             $stringValue = $this->escapeString($stringParts[$i]);
             if ($stringValue !== '') {
-                $code .= $this->indentation . $i . 's = \'' . $stringValue . '\'' . PHP_EOL;
+                $parts[] = '\'' . $stringValue . '\'';
             }
             if ($i < count($stringParts) && isset($expressions[$i])) {
-                $code .= $this->indentation . $i . 'v = ${' . $expressions[$i] . '}' . PHP_EOL;
+                $parts[] = '(' . $expressions[$i] . ')';
             }
         }
-        $code .= '}' . PHP_EOL;
+        $code = '${' . implode(' + ', $parts) . '}' . PHP_EOL;
+//        echo $code;
+//        die;
         return $code;
     }
 
